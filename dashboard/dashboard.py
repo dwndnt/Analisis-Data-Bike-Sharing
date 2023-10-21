@@ -6,7 +6,8 @@ from scipy.stats import ttest_ind
 from scipy.stats import f_oneway
 
 # Load Data
-hour = pd.read_csv('hour.csv')
+data_url = "https://github.com/dwndnt/Analisis-Data-Bike-Sharing/blob/main/dashboard/hour.csv"
+hour = pd.read_csv(data_url)
 
 st.title("Bike Sharing Data Analysis")
 
