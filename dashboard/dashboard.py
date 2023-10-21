@@ -144,8 +144,6 @@ peminjaman_casual_kerja = data_kerja['casual']
 statistic, p_value = ttest_ind(peminjaman_casual_libur, peminjaman_casual_kerja)
 
 st.subheader("Uji T-Independent untuk Peminjaman Sepeda Casual")
-st.write("pengujian statistik t-independent untuk menguji apakah terdapat perbedaan yang signifikan dalam tipe peminjaman sepeda casual antara hari libur dan hari kerja.")
-st.write("Hipotesis: Terdapat perbedaan yang signifikan antara tipe peminjaman sepeda casual pada hari libur dan hari kerja.")
 st.write("Uji Statistik:")
 st.write("Statistic:", statistic)
 st.write("P-Value:", p_value)
@@ -188,23 +186,6 @@ anova_results = pd.DataFrame({
 
 st.table(anova_results)
 
-# Melakukan pengujian hipotesis
-st.subheader("Hasil Pengujian Hipotesis")
-
-if p_value_temp < alpha:
-    st.write("Terdapat perbedaan yang signifikan antara temp dan cnt.")
-else:
-    st.write("Tidak terdapat perbedaan yang signifikan antara temp dan cnt.")
-
-if p_value_hum < alpha:
-    st.write("Terdapat perbedaan yang signifikan antara hum dan cnt.")
-else:
-    st.write("Tidak terdapat perbedaan yang signifikan antara hum dan cnt.")
-
-if p_value_windspeed < alpha:
-    st.write("Terdapat perbedaan yang signifikan antara windspeed dan cnt.")
-else:
-    st.write("Tidak terdapat perbedaan yang signifikan antara windspeed dan cnt.")
 
 st.subheader("Visualisasi ANOVA")
 
