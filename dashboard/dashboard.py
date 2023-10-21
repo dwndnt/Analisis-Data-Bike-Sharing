@@ -48,7 +48,6 @@ plt.tight_layout()
 st.pyplot(fig)
 
 st.subheader("Proses Imputasi")
-st.markdown("Berdasarkan hasil analisa boxplot, terlihat bahwa data numerik memiliki pecilan yang lumayan besar. Sehingga, perlu diatasi menggunakan metode Imputasi. formulasi imputasi yang digunakan :")
 
 # Definisikan rumus LaTeX
 latex_formula = r"""
@@ -111,17 +110,6 @@ st.header("Exploratory Data Analysis")
 
 # Hitung korelasi antara variabel cuaca dan jumlah peminjaman sepeda
 correlation_matrix = hour[['temp', 'hum', 'windspeed', 'cnt']].corr()
-
-# Tampilkan heatmap untuk visualisasi korelasi
-st.subheader("Korelasi antara Unsur Cuaca dan Jumlah Peminjaman Sepeda")
-
-st.markdown("Korelasi berkisar antara -1 hingga 1; di mana 1 menunjukkan korelasi positif sempurna, 0 menunjukkan tidak ada korelasi, dan -1 menunjukkan korelasi negatif sempurna.")
-
-st.markdown("Korelasi antara **temp** (temperature) dan **cnt** (total count) adalah sekitar 0.404772. Ini menunjukkan adanya korelasi positif yang sedang antara suhu dan jumlah total peminjaman sepeda. Artinya, semakin tinggi suhu, semakin tinggi juga jumlah peminjaman sepeda.")
-
-st.markdown("Korelasi antara **hum** (humidity) dan **cnt** adalah sekitar -0.322911. Ini menunjukkan adanya korelasi negatif yang sedang antara kelembapan udara dan jumlah total peminjaman sepeda. Artinya, semakin tinggi kelembapan, semakin rendah jumlah peminjaman sepeda.")
-
-st.markdown("Korelasi antara **windspeed** dan **cnt** adalah sekitar 0.100906. Ini menunjukkan adanya korelasi positif yang lemah antara kecepatan angin dan jumlah total peminjaman sepeda. Meskipun positif, korelasi ini sangat lemah sehingga tidak ada hubungan yang kuat antara kecepatan angin dan peminjaman sepeda.")
 
 st.write("Heatmap Korelasi:")
 fig, ax = plt.subplots(figsize=(10, 6))
@@ -234,7 +222,6 @@ st.header(" Visualisasi & Explanatory Analysis")
 # Pertanyaan 1: 
 
 st.subheader("Pola Peminjaman Sepeda pada Hari Libur vs. Hari Kerja")
-st.write("Berikut adalah perbandingan peminjaman sepeda pada hari libur dan hari kerja:")
 
 data_holiday = hour[hour['holiday'] == 1]
 data_working_day = hour[hour['workingday'] == 1]
@@ -261,8 +248,7 @@ st.pyplot(fig)
 
 # Pertanyaan 2:
 
-st.subheader("Kondisi temperatur, kelembaban, dan kecepatan angin terhadap pola peminjaman sepeda")
-st.write("Berikut adalah visualisasi hubungan antara temperatur, kelembaban, dan kecepatan angin dengan jumlah peminjaman sepeda:")
+st.subheader("Kondisi Unsur Cuaca terhadap pola peminjaman sepeda")
 
 # Scatter plots
 
@@ -281,12 +267,3 @@ st.subheader('kondisi Kecepatan angin terhadap pola peminjaman sepeda ')
 fig, ax = plt.subplots(figsize=(10, 6))
 sns.scatterplot(x='windspeed', y='cnt', data=hour, alpha=0.5, ax=ax)
 st.pyplot(fig)
-
-
-st.title("Conclusion")
-st.write("Berdasarkan data rata-rata peminjaman sepeda pada hari libur dan hari kerja, dapat dilihat bahwa terdapat perbedaan yang signifikan dalam pola peminjaman sepeda antara kedua kondisi tersebut. Pada hari libur, rata-rata peminjaman sepeda casual mencapai 44.718, sedangkan peminjaman sepeda terdaftar (registered) mencapai 112.152. Dengan total peminjaman mencapai 156.87. Pada hari kerja, rata-rata peminjaman sepeda casual lebih rendah, yaitu sekitar 25.561, sementara peminjaman terdaftar lebih tinggi, mencapai 167.646. Total peminjaman pada hari kerja adalah 193.208. Pola ini menunjukkan bahwa pada hari libur, terdapat kontribusi yang lebih besar dari peminjaman casual, sementara pada hari kerja, peminjaman terdaftar mendominasi. Perbedaan ini mungkin disebabkan oleh perbedaan dalam rutinitas dan tujuan pengguna sepeda pada hari libur dan hari kerja. Pada hari libur, orang mungkin lebih cenderung untuk melakukan perjalanan rekreasi atau santai, yang dapat menjelaskan tingginya peminjaman casual. Sementara pada hari kerja, penggunaan sepeda mungkin lebih terkait dengan aktivitas sehari-hari seperti bersekolah atau pergi bekerja, yang menjelaskan dominasi peminjaman terdaftar. Dengan demikian, dapat disimpulkan bahwa terdapat perbedaan yang signifikan dalam pola peminjaman sepeda pada hari libur dan hari kerja, dengan peminjaman casual dan terdaftar berperan berbeda dalam masing-masing kondisi.")
-st.write("Kondisi cuaca, termasuk temperatur (suhu), kelembaban, dan kecepatan angin, memainkan peran kunci dalam memengaruhi pola peminjaman sepeda dalam dataset ini. Analisis korelasi antara variabel cuaca dan jumlah total peminjaman sepeda (cnt) memberikan wawasan yang berharga tentang bagaimana faktor-faktor cuaca ini berdampak pada aktivitas bersepeda.")
-st.write("Pertama, suhu atau temperatur memiliki pengaruh yang signifikan terhadap pola peminjaman sepeda. Korelasi positif yang sedang antara suhu dan cnt menunjukkan bahwa semakin tinggi suhu, semakin tinggi juga jumlah peminjaman sepeda. Ini mengindikasikan bahwa cuaca yang lebih hangat dan nyaman mendorong lebih banyak orang untuk bersepeda. Pada hari-hari yang cerah dan hangat, minat pengguna untuk mengambil sepeda sewaan tampaknya lebih tinggi.")
-st.write("Di sisi lain, kelembaban udara memainkan peran yang berlawanan. Korelasi negatif yang sedang antara kelembaban udara dan cnt menunjukkan bahwa semakin tinggi kelembaban udara, semakin rendah jumlah peminjaman sepeda. Tingkat kelembapan yang tinggi dapat mengurangi minat orang untuk bersepeda, mungkin karena kondisi cuaca yang kurang nyaman dan pengaruh kelembapan terhadap kenyamanan bersepeda.")
-st.write("Terakhir, kecepatan angin memiliki dampak yang lebih kecil, dengan korelasi positif yang lemah. Ini menunjukkan bahwa pengaruh kecepatan angin terhadap jumlah peminjaman sepeda tidak sekuat suhu atau kelembaban udara. Namun, dalam situasi tertentu, seperti cuaca yang sangat berangin atau buruk, kecepatan angin mungkin memiliki pengaruh lebih besar terhadap minat pengguna untuk bersepeda.")
-st.write("Secara keseluruhan, faktor-faktor cuaca, terutama suhu dan kelembaban udara, memengaruhi pola peminjaman sepeda dengan cara yang signifikan. Ini memiliki implikasi penting dalam perencanaan dan manajemen sepeda sewaan, di mana pemahaman tentang hubungan ini dapat digunakan untuk mengoptimalkan layanan dan meningkatkan pengalaman pengguna terkait sepeda.")
